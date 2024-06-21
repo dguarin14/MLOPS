@@ -1,0 +1,9 @@
+# This is a boilerplate parameters config generated for pipeline 'train_split'
+# using Kedro 0.19.4.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.4/configuration/parameters.html
+
+split_options:
+  test_size: 0.2
+

@@ -1,0 +1,896 @@
+{
+  "evaluation_parameters": {},
+  "meta": {
+    "active_batch_definition": {
+      "batch_identifiers": {},
+      "data_asset_name": "credit",
+      "data_connector_name": "fluent",
+      "datasource_name": "credit_datasource"
+    },
+    "batch_markers": {
+      "ge_load_time": "20240622T125755.675971Z",
+      "pandas_data_fingerprint": "0ec70de5c7b5d19c91941a07a02febcd"
+    },
+    "batch_spec": {
+      "batch_data": "PandasDataFrame"
+    },
+    "checkpoint_id": null,
+    "checkpoint_name": "checkpoint_marital",
+    "expectation_suite_name": "Credit",
+    "great_expectations_version": "0.18.16",
+    "run_id": {
+      "run_name": null,
+      "run_time": "2024-06-22T13:57:55.648516+01:00"
+    },
+    "validation_id": null,
+    "validation_time": "20240622T125755.687940Z"
+  },
+  "results": [
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "duration",
+          "type_": "float64"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "float64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "credit_amount",
+          "type_": "float64"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "float64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "installment_commitment",
+          "type_": "float64"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "float64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "residence_since",
+          "type_": "float64"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "float64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "age",
+          "type_": "float64"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "float64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "existing_credits",
+          "type_": "float64"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "float64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_values_to_be_of_type",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "num_dependents",
+          "type_": "float64"
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "observed_value": "float64"
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "checking_status",
+          "value_set": [
+            "<00<=X<200",
+            "no checking",
+            ">=200"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 269,
+              "value": "0<=X<200"
+            },
+            {
+              "count": 274,
+              "value": "<0"
+            },
+            {
+              "count": 63,
+              "value": ">=200"
+            },
+            {
+              "count": 394,
+              "value": "no checking"
+            }
+          ]
+        },
+        "observed_value": [
+          "0<=X<200",
+          "<0",
+          ">=200",
+          "no checking"
+        ]
+      },
+      "success": false
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "credit_history",
+          "value_set": [
+            "critical/other, existing credit",
+            "existing paid",
+            "delayed previously",
+            "no credits/all paid",
+            "all paid"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 49,
+              "value": "all paid"
+            },
+            {
+              "count": 293,
+              "value": "critical/other existing credit"
+            },
+            {
+              "count": 88,
+              "value": "delayed previously"
+            },
+            {
+              "count": 530,
+              "value": "existing paid"
+            },
+            {
+              "count": 40,
+              "value": "no credits/all paid"
+            }
+          ]
+        },
+        "observed_value": [
+          "all paid",
+          "critical/other existing credit",
+          "delayed previously",
+          "existing paid",
+          "no credits/all paid"
+        ]
+      },
+      "success": false
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "purpose",
+          "value_set": [
+            "radio/tv",
+            "education",
+            "furniture/equipment",
+            "new car",
+            "used car",
+            "business",
+            "domestic appliance",
+            "repairs",
+            "other",
+            "retraining"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 97,
+              "value": "business"
+            },
+            {
+              "count": 12,
+              "value": "domestic appliance"
+            },
+            {
+              "count": 50,
+              "value": "education"
+            },
+            {
+              "count": 181,
+              "value": "furniture/equipment"
+            },
+            {
+              "count": 234,
+              "value": "new car"
+            },
+            {
+              "count": 12,
+              "value": "other"
+            },
+            {
+              "count": 280,
+              "value": "radio/tv"
+            },
+            {
+              "count": 22,
+              "value": "repairs"
+            },
+            {
+              "count": 9,
+              "value": "retraining"
+            },
+            {
+              "count": 103,
+              "value": "used car"
+            }
+          ]
+        },
+        "observed_value": [
+          "business",
+          "domestic appliance",
+          "education",
+          "furniture/equipment",
+          "new car",
+          "other",
+          "radio/tv",
+          "repairs",
+          "retraining",
+          "used car"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "savings_status",
+          "value_set": [
+            "no known savings",
+            "<100",
+            "500<=X<1000",
+            ">=1000",
+            "100<=X<500"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 103,
+              "value": "100<=X<500"
+            },
+            {
+              "count": 63,
+              "value": "500<=X<1000"
+            },
+            {
+              "count": 603,
+              "value": "<100"
+            },
+            {
+              "count": 48,
+              "value": ">=1000"
+            },
+            {
+              "count": 183,
+              "value": "no known savings"
+            }
+          ]
+        },
+        "observed_value": [
+          "100<=X<500",
+          "500<=X<1000",
+          "<100",
+          ">=1000",
+          "no known savings"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "employment",
+          "value_set": [
+            ">=7",
+            "1<=X<4",
+            "4<=X<7",
+            "unemployed",
+            "<1"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 339,
+              "value": "1<=X<4"
+            },
+            {
+              "count": 174,
+              "value": "4<=X<7"
+            },
+            {
+              "count": 172,
+              "value": "<1"
+            },
+            {
+              "count": 253,
+              "value": ">=7"
+            },
+            {
+              "count": 62,
+              "value": "unemployed"
+            }
+          ]
+        },
+        "observed_value": [
+          "1<=X<4",
+          "4<=X<7",
+          "<1",
+          ">=7",
+          "unemployed"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "personal_status",
+          "value_set": [
+            "male single",
+            "female div/dep/mar",
+            "male div/sep",
+            "male mar/wid"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 310,
+              "value": "female div/dep/mar"
+            },
+            {
+              "count": 50,
+              "value": "male div/sep"
+            },
+            {
+              "count": 92,
+              "value": "male mar/wid"
+            },
+            {
+              "count": 548,
+              "value": "male single"
+            }
+          ]
+        },
+        "observed_value": [
+          "female div/dep/mar",
+          "male div/sep",
+          "male mar/wid",
+          "male single"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "other_parties",
+          "value_set": [
+            "none",
+            "guarantor",
+            "co applicant"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 41,
+              "value": "co applicant"
+            },
+            {
+              "count": 52,
+              "value": "guarantor"
+            },
+            {
+              "count": 907,
+              "value": "none"
+            }
+          ]
+        },
+        "observed_value": [
+          "co applicant",
+          "guarantor",
+          "none"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "property_magnitude",
+          "value_set": [
+            "real estate",
+            "life insurance",
+            "no known property",
+            "car"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 332,
+              "value": "car"
+            },
+            {
+              "count": 232,
+              "value": "life insurance"
+            },
+            {
+              "count": 154,
+              "value": "no known property"
+            },
+            {
+              "count": 282,
+              "value": "real estate"
+            }
+          ]
+        },
+        "observed_value": [
+          "car",
+          "life insurance",
+          "no known property",
+          "real estate"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "other_payment_plans",
+          "value_set": [
+            "none",
+            "bank",
+            "stores"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 139,
+              "value": "bank"
+            },
+            {
+              "count": 814,
+              "value": "none"
+            },
+            {
+              "count": 47,
+              "value": "stores"
+            }
+          ]
+        },
+        "observed_value": [
+          "bank",
+          "none",
+          "stores"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "housing",
+          "value_set": [
+            "own",
+            "for free",
+            "rent"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 108,
+              "value": "for free"
+            },
+            {
+              "count": 713,
+              "value": "own"
+            },
+            {
+              "count": 179,
+              "value": "rent"
+            }
+          ]
+        },
+        "observed_value": [
+          "for free",
+          "own",
+          "rent"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "job",
+          "value_set": [
+            "skilled",
+            "unskilled resident",
+            "high qualif/self emp/mgmt",
+            "unemp/unskilled non res"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 148,
+              "value": "high qualif/self emp/mgmt"
+            },
+            {
+              "count": 630,
+              "value": "skilled"
+            },
+            {
+              "count": 22,
+              "value": "unemp/unskilled non res"
+            },
+            {
+              "count": 200,
+              "value": "unskilled resident"
+            }
+          ]
+        },
+        "observed_value": [
+          "high qualif/self emp/mgmt",
+          "skilled",
+          "unemp/unskilled non res",
+          "unskilled resident"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "own_telephone",
+          "value_set": [
+            "yes",
+            "none"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 596,
+              "value": "none"
+            },
+            {
+              "count": 404,
+              "value": "yes"
+            }
+          ]
+        },
+        "observed_value": [
+          "none",
+          "yes"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "foreign_worker",
+          "value_set": [
+            "yes",
+            "no"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 37,
+              "value": "no"
+            },
+            {
+              "count": 963,
+              "value": "yes"
+            }
+          ]
+        },
+        "observed_value": [
+          "no",
+          "yes"
+        ]
+      },
+      "success": true
+    },
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-credit",
+          "column": "class",
+          "value_set": [
+            "goodbad"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 300,
+              "value": "bad"
+            },
+            {
+              "count": 700,
+              "value": "good"
+            }
+          ]
+        },
+        "observed_value": [
+          "bad",
+          "good"
+        ]
+      },
+      "success": false
+    }
+  ],
+  "statistics": {
+    "evaluated_expectations": 21,
+    "success_percent": 85.71428571428571,
+    "successful_expectations": 18,
+    "unsuccessful_expectations": 3
+  },
+  "success": false
+}

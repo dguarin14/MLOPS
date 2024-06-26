@@ -1,0 +1,76 @@
+{
+  "evaluation_parameters": {},
+  "meta": {
+    "active_batch_definition": {
+      "batch_identifiers": {},
+      "data_asset_name": "Credit3",
+      "data_connector_name": "fluent",
+      "datasource_name": "credit_datasource"
+    },
+    "batch_markers": {
+      "ge_load_time": "20240622T133854.678172Z",
+      "pandas_data_fingerprint": "0ec70de5c7b5d19c91941a07a02febcd"
+    },
+    "batch_spec": {
+      "batch_data": "PandasDataFrame"
+    },
+    "checkpoint_id": null,
+    "checkpoint_name": "Credit3",
+    "expectation_suite_name": "Credit3",
+    "great_expectations_version": "0.18.16",
+    "run_id": {
+      "run_name": null,
+      "run_time": "2024-06-22T14:38:54.642294+01:00"
+    },
+    "validation_id": null,
+    "validation_time": "20240622T133854.707899Z"
+  },
+  "results": [
+    {
+      "exception_info": {
+        "exception_message": null,
+        "exception_traceback": null,
+        "raised_exception": false
+      },
+      "expectation_config": {
+        "expectation_type": "expect_column_distinct_values_to_be_in_set",
+        "kwargs": {
+          "batch_id": "credit_datasource-Credit3",
+          "column": "class",
+          "value_set": [
+            "good",
+            "bad"
+          ]
+        },
+        "meta": {}
+      },
+      "meta": {},
+      "result": {
+        "details": {
+          "value_counts": [
+            {
+              "count": 300,
+              "value": "bad"
+            },
+            {
+              "count": 700,
+              "value": "good"
+            }
+          ]
+        },
+        "observed_value": [
+          "bad",
+          "good"
+        ]
+      },
+      "success": true
+    }
+  ],
+  "statistics": {
+    "evaluated_expectations": 1,
+    "success_percent": 100.0,
+    "successful_expectations": 1,
+    "unsuccessful_expectations": 0
+  },
+  "success": true
+}

@@ -7,6 +7,10 @@ credits:
   type: pandas.CSVDataset
   filepath: data/01_raw/credit_customers.csv
 
+data_credits:
+  type: pandas.CSVDataset
+  filepath: data/02_intermediate/data_credits.csv
+
 preprocess_credits:
   type: pandas.CSVDataset
   filepath: data/02_intermediate/preprocess_credits.csv
@@ -14,6 +18,7 @@ preprocess_credits:
 X_train_data:
   type: pandas.CSVDataset
   filepath: data/05_model_input/X_train.csv
+
 
 y_train_data:
   type: pandas.CSVDataset

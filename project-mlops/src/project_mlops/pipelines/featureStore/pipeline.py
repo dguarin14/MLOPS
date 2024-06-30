@@ -12,7 +12,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             func= feature_hopswork,
             inputs='credits',
             outputs= 'data_credits',
-            name = 'preprocess_credits_node'
+            name = 'credits_Feature_store'
         )
 
 

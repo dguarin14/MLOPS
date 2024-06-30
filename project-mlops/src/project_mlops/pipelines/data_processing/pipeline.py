@@ -12,7 +12,7 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
             func=preprocess_credit,
-            inputs='credits',
+            inputs='gx_credits',
             outputs= 'preprocess_credits',
             name = 'preprocess_credits_node'
         )

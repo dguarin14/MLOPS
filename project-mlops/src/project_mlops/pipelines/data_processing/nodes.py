@@ -48,6 +48,7 @@ def preprocess_credit(credit_data):
     cf = categorical_features.to_numpy()
     cf2 = cf[:-1]
     df = hot_dummies(cf2, credit_data, numerical_features)
+ 
     df_scale = scaleit(df, numerical_features)
     for i in to_add:
         df_scale[i]= credit_data[i]

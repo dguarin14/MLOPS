@@ -9,11 +9,11 @@ from .nodes import evaluate_f1_score
 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
+
         node (
             func= evaluate_f1_score,
-            inputs = ['model_logistic', 'X_test_data','y_test_data'],
-            outputs = 'f1_score_logistic',
-            name = 'f1_score_logistic'
+            inputs = ['model_final', 'X_test_data','y_test_data', 'selected_features'],
+            outputs = 'f1_score_final',
+            name = 'f1_score_final'
         )
-
     ])

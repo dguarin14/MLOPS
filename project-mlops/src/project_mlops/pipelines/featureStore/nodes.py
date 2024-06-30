@@ -16,7 +16,7 @@ from kedro.config import OmegaConfigLoader # type: ignore
 from kedro.framework.project import settings # type: ignore
 import hopsworks # type: ignore
 
-def build_expectations(type, columns, suite_c):
+def build_expectations(name, type, columns):
 
     value = {'checking_status' : ['<0', '0<=X<200', 'no checking', '>=200'],
      'credit_history': ['critical/other existing credit', 'existing paid', 'delayed previously',
@@ -36,12 +36,15 @@ def build_expectations(type, columns, suite_c):
     'foreign_worker':['yes', 'no']   
     }
 
+    expectation_suite_bank = ExpectationSuite(
+        expectation_suite_name= name
+    )
     
     if type == 'numerical':
         columns = ['duration', 'credit_amount', 'installment_commitment',
        'residence_since', 'age', 'existing_credits', 'num_dependents']
         for i in columns:
-            suite_c.add_expectation(
+            expectation_suite_bank.add_expectation(
                         ExpectationConfiguration(
                             expectation_type="expect_column_values_to_be_of_type",
                             kwargs={"column": i, "type_": "float64"},
@@ -49,7 +52,7 @@ def build_expectations(type, columns, suite_c):
                     )
     elif type == 'categorical':
         for i in columns:
-            suite_c.add_expectation(
+            expectation_suite_bank.add_expectation(
                         ExpectationConfiguration(
                             expectation_type="expect_column_distinct_values_to_be_in_set",
                             kwargs={"column": i, "value_set": value[i]},
@@ -57,13 +60,13 @@ def build_expectations(type, columns, suite_c):
                     )
     else:
         print(type)
-        suite_c.add_expectation(
+        expectation_suite_bank.add_expectation(
                         ExpectationConfiguration(
                             expectation_type="expect_column_distinct_values_to_be_in_set",
-                            kwargs={"column": 'class', "value_set": ['good', 'bad']},
+                            kwargs={"column": 'class', "value_set": ['good' 'bad']},
                         )
                     )
-    return suite_c
+    return expectation_suite_bank
 
 def save_feature_store(df, group_name, expectations,feature_group_version,description, ):
     print(df.index)

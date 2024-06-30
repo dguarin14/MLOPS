@@ -6,6 +6,10 @@ This is your new Kedro project, which was generated using `kedro 0.19.4`.
 
 Take a look at the [Kedro documentation](https://docs.kedro.org) to get started.
 
+## If there is problem finding the credits data.
+
+Please Copy and paste the csv file located in this part, and copy it in project-mlops/data/01_raw
+
 ## Rules and guidelines
 
 In order to get the best out of the template:

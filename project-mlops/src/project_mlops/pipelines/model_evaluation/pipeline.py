@@ -14,6 +14,20 @@ def create_pipeline(**kwargs) -> Pipeline:
             inputs = ['model_logistic', 'X_test_data','y_test_data'],
             outputs = 'f1_score_logistic',
             name = 'f1_score_logistic'
+        ),
+         node (
+            func= evaluate_f1_score,
+            inputs = ['model_randomForest', 'X_test_data','y_test_data'],
+            outputs = 'f1_score_randomForest',
+            name = 'f1_score_randomForest'
+        ),
+         node (
+            func= evaluate_f1_score,
+            inputs = ['model_decisionTree', 'X_test_data','y_test_data'],
+            outputs = 'f1_score_decisionTree',
+            name = 'f1_score_decisionTree'
         )
+
+
 
     ])

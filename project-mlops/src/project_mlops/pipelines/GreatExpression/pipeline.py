@@ -12,7 +12,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             func= great_expectations,
             inputs='data_credits',
             outputs= 'gx_credits',
-            name = 'preprocess_credits_node'
+            name = 'preprocess_credits_gx'
         )
 
     ])

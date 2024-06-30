@@ -1,55 +1,93 @@
 """
-This is a boilerplate pipeline 'data_processing'
+This is a boilerplate pipeline 'data_drift'
 generated using Kedro 0.19.4
 """
-
-
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
-from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+import scipy.stats
 
+def calculate_psi(expected, actual, buckettype='bins', buckets=10, axis=0):
+    def psi(expected_array, actual_array, buckets):
+        def scale_range(input, min, max):
+            input += -(np.min(input))
+            input /= np.max(input) / (max - min)
+            input += min
+            return input
 
-def map_data(df, column, values):
-    df[column] = df[column].map({values[0]: 1.0, values[1]: 0.0})
-    return df[column]
+        breakpoints = np.arange(0, buckets + 1) / (buckets) * 100
+        if buckettype == 'bins':
+            breakpoints = scale_range(breakpoints, np.min(expected_array), np.max(expected_array))
+        elif buckettype == 'quantiles':
+            breakpoints = np.stack([np.percentile(expected_array, b) for b in breakpoints])
 
-def replace_value(name_column, replace_v, new_value, df):
-    for i in replace_v:
-        df[name_column] = df[name_column].replace(i, new_value)
-    return df[name_column]
+        expected_percents = np.histogram(expected_array, breakpoints)[0] / len(expected_array)
+        actual_percents = np.histogram(actual_array, breakpoints)[0] / len(actual_array)
 
-def hot_dummies(categorical, df,num):
-    df_dummies = pd.get_dummies(df[categorical]).astype(float)
-    for i in num:
-        df_dummies[i]= df[i]
-    return df_dummies
+        def sub_psi(e_perc, a_perc):
+            if a_perc == 0:
+                a_perc = 0.0001
+            if e_perc == 0:
+                e_perc = 0.0001
+            value = (e_perc - a_perc) * np.log(e_perc / a_perc)
+            return value
 
-def scaleit(df,columns):
-    min_max = MinMaxScaler().fit(df[columns])
-    min_max_X = min_max.transform(df[columns])
-    pandas_min_max = pd.DataFrame(min_max_X, columns=columns)
-    for i in columns:
-        df[i] = pandas_min_max[i]
-    return df
+        psi_value = np.sum(sub_psi(expected_percents[i], actual_percents[i]) for i in range(len(expected_percents)))
+        return psi_value
 
-def preprocess_credit(credit_data):
+    # Ajuste aquí para definir correctamente la longitud de psi_values
+    if axis == 0:
+        psi_values = np.empty(expected.shape[1])
+    elif axis == 1:
+        psi_values = np.empty(expected.shape[0])
 
-    categorical_features = credit_data.select_dtypes(include=['object']).columns
-    numerical_features = credit_data.select_dtypes(include=['float64']).columns
-    credit_data['own_telephone'] = map_data(credit_data, 'own_telephone', ['yes','none'])
-    credit_data['foreign_worker'] = map_data(credit_data, 'foreign_worker', ['yes','no'])  
-    credit_data['class'] = map_data(credit_data, 'class', ['good','bad']) 
-    to_add = ['own_telephone','foreign_worker', 'class']
-    categorical_features = credit_data.select_dtypes(include=['object']).columns
-    credit_data['credit_history'] = replace_value('credit_history',['no credits/all paid'],'all paid', credit_data)
-    credit_data['purpose'] = replace_value('purpose',['retraining','domestic appliance','repairs'],'other', credit_data)
-    cf = categorical_features.to_numpy()
-    cf2 = cf[:-1]
-    df = hot_dummies(cf2, credit_data, numerical_features)
-    df_scale = scaleit(df, numerical_features)
-    for i in to_add:
-        df_scale[i]= credit_data[i]
+    for i in range(len(psi_values)):
+        if axis == 0:
+            psi_values[i] = psi(expected[:, i], actual[:, i], buckets)
+        elif axis == 1:
+            psi_values[i] = psi(expected[i, :], actual[i, :], buckets)
 
-    return df_scale
+    return psi_values
+
+def calculate_js(expected, actual, buckettype='bins', buckets=10, axis=0):
+    def scale_range(input, min, max):
+        input += -(np.min(input))
+        input /= np.max(input) / (max - min)
+        input += min
+        return input
+
+    breakpoints = np.arange(0, buckets + 1) / (buckets) * 100
+    if buckettype == 'bins':
+        breakpoints = scale_range(breakpoints, np.min(expected), np.max(expected))
+    elif buckettype == 'quantiles':
+        breakpoints = np.stack([np.percentile(expected, b) for b in breakpoints])
+
+    expected_percents = np.histogram(expected, breakpoints, density=True)[0]
+    actual_percents = np.histogram(actual, breakpoints, density=True)[0]
+    M = (expected_percents + actual_percents) / 2
+    d1 = scipy.stats.entropy(expected_percents, M, base=2)
+    d2 = scipy.stats.entropy(actual_percents, M, base=2)
+    js_dv = (d1 + d2) / 2
+
+    return np.sqrt(js_dv)
+
+def calculate_data_drift_psi(X_train, X_test, buckettype='bins', buckets=10, axis=0):
+    print(f"X_train type: {type(X_train)}, shape: {X_train.shape}")
+    print(f"X_test type: {type(X_test)}, shape: {X_test.shape}")
+
+    expected_numerical = X_train.select_dtypes(include=['float64', 'int64'])
+    actual_numerical = X_test.select_dtypes(include=['float64', 'int64'])
+
+    print(f"expected_numerical shape: {expected_numerical.shape}")
+    print(f"actual_numerical shape: {actual_numerical.shape}")
+
+    psi_values = calculate_psi(expected_numerical.values, actual_numerical.values, buckettype, buckets, axis)
+
+    return psi_values
+
+def calculate_data_drift_js(X_train, X_test, buckettype='bins', buckets=10, axis=0):
+    expected_numerical = X_train.select_dtypes(include=['float64', 'int64'])
+    actual_numerical = X_test.select_dtypes(include=['float64', 'int64'])
+
+    js_values = calculate_js(expected_numerical.values, actual_numerical.values, buckettype, buckets, axis)
+
+    return js_values

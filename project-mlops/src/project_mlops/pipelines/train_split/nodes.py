@@ -10,5 +10,7 @@ def trainTest_split(df: pd.DataFrame, parameters: t.Dict) -> t.Tuple:
     features = df.columns.to_numpy()[:-1]
     X = df[features]
     y = df['class']
-    X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = parameters['test_size'])
-    return X_train, X_test, y_train, y_test
+    X_train_1, X_test, y_train_1, y_test = train_test_split(X,y, test_size = parameters['test_size'])
+    X_train, X_val, y_train, y_val = train_test_split(X_train_1,y_train_1, test_size = parameters['test_size'])
+
+    return X_train, X_test, y_train, y_test, X_val, y_val

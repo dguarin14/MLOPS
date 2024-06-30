@@ -10,7 +10,7 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(
             func= model_grid,
-            inputs = ['X_train_data','X_test_data','y_test_data', 'y_train_data'],
+            inputs = ['X_train_data','X_val_data','y_val_data', 'y_train_data', "selected_features"],
             outputs = 'best_name_model',
             name = 'model_grid'
         )

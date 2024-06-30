@@ -19,7 +19,11 @@ X_train_data:
   type: pandas.CSVDataset
   filepath: data/05_model_input/X_train.csv
 
-
+selected_features:
+  type: kedro_mlflow.io.artifacts.MlflowArtifactDataset
+  dataset:
+    type: pickle.PickleDataset
+    filepath: data/04_features/selected_features.pkl
 y_train_data:
   type: pandas.CSVDataset
   filepath: data/05_model_input/y_train.csv
@@ -32,8 +36,29 @@ y_test_data:
   type: pandas.CSVDataset
   filepath: data/05_model_input/y_test.csv 
 
+X_val_data:
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/X_val.csv
+
+y_val_data:
+  type: pandas.CSVDataset
+  filepath: data/05_model_input/y_val.csv 
+
 model_logistic:
   type: kedro_mlflow.io.artifacts.MlflowArtifactDataset
   dataset:
     type: pickle.PickleDataset
     filepath: data/06_models/model_logistic.pkl
+
+model_final:
+  type: kedro_mlflow.io.artifacts.MlflowArtifactDataset
+  dataset:
+    type: pickle.PickleDataset
+    filepath: data/06_models/model_final.pkl
+
+f1_score:
+  type: kedro_mlflow.io.artifacts.MlflowArtifactDataset
+  dataset:
+    type: pickle.PickleDataset
+    filepath: data/06_models/model_final.pkl
+

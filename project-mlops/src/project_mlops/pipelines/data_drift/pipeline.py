@@ -11,13 +11,13 @@ def create_pipeline(**kwargs) -> Pipeline:
         [
             node(
                 func=calculate_data_drift_psi,
-                inputs=["X_train_data", "X_test_data"],
+                inputs=["X_train_data", "X_val_data"],
                 outputs="psi_values",
                 name="calculate_psi",
             ) ,
             node(
                 func=calculate_data_drift_js,
-                inputs=["X_train_data", "X_test_data"],
+                inputs=["X_train_data", "X_val_data"],
                 outputs="js_values",
                 name="calculate_js",
             )

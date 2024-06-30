@@ -1,0 +1,248 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "credits",
+  "expectations": [
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "duration",
+        "type_": "float64"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "credit_amount",
+        "type_": "float64"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "installment_commitment",
+        "type_": "float64"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "residence_since",
+        "type_": "float64"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "age",
+        "type_": "float64"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "existing_credits",
+        "type_": "float64"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_of_type",
+      "kwargs": {
+        "column": "num_dependents",
+        "type_": "float64"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "checking_status",
+        "value_set": [
+          "<0",
+          "0<=X<200",
+          "no checking",
+          ">=200"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "credit_history",
+        "value_set": [
+          "critical/other existing credit",
+          "existing paid",
+          "delayed previously",
+          "no credits/all paid",
+          "all paid"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "purpose",
+        "value_set": [
+          "radio/tv",
+          "education",
+          "furniture/equipment",
+          "new car",
+          "used car",
+          "business",
+          "domestic appliance",
+          "repairs",
+          "other",
+          "retraining"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "savings_status",
+        "value_set": [
+          "no known savings",
+          "<100",
+          "500<=X<1000",
+          ">=1000",
+          "100<=X<500"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "employment",
+        "value_set": [
+          ">=7",
+          "1<=X<4",
+          "4<=X<7",
+          "unemployed",
+          "<1"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "personal_status",
+        "value_set": [
+          "male single",
+          "female div/dep/mar",
+          "male div/sep",
+          "male mar/wid"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "other_parties",
+        "value_set": [
+          "none",
+          "guarantor",
+          "co applicant"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "property_magnitude",
+        "value_set": [
+          "real estate",
+          "life insurance",
+          "no known property",
+          "car"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "other_payment_plans",
+        "value_set": [
+          "none",
+          "bank",
+          "stores"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "housing",
+        "value_set": [
+          "own",
+          "for free",
+          "rent"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "job",
+        "value_set": [
+          "skilled",
+          "unskilled resident",
+          "high qualif/self emp/mgmt",
+          "unemp/unskilled non res"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "own_telephone",
+        "value_set": [
+          "yes",
+          "none"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "foreign_worker",
+        "value_set": [
+          "yes",
+          "no"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "class",
+        "value_set": [
+          "good",
+          "bad"
+        ]
+      },
+      "meta": {}
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.18.16"
+  }
+}

@@ -27,7 +27,10 @@ from sklearn.model_selection import GridSearchCV # type: ignore
 from mlflow import MlflowClient # type: ignore
 from sklearn.metrics import f1_score # type: ignore
 
-def model_grid(X_train, X_test, y_test, y_train):
+def model_grid(X_train, X_test, y_test, y_train, columns):
+    X_train = X_train[columns]
+    X_test = X_test[columns]
+
     print("------------------------")
     mlflow.end_run()
     mlflow.set_experiment("mlflow_project_credits_1")

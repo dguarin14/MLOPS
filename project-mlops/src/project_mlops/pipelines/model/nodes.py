@@ -17,16 +17,6 @@ from sklearn.metrics import mean_squared_error, explained_variance_score
 
 def Model_Logistic(X_train, y_train):
 
-    mlflow.set_tracking_uri("http://127.0.0.1:5000/")
-
-    with mlflow.start_run(run_name="tracking experiment_1", description='checking model') as run:
-        rf = RandomForestRegressor(n_estimators=100, max_depth=6, max_features=3)
-        
-        rf.fit(X_train, y_train)
-        print("1")
-    mlflow.end_run()
-    
-    mlflow.set_experiment("mlflow_first_example")
     model = LogisticRegression(solver='lbfgs', random_state=42)
     model.fit(X_train, y_train)
     return model
@@ -40,5 +30,11 @@ def Model_randomForest(X_train, y_train):
 
 def Model_decisionTree(X_train, y_train):
     model = DecisionTreeClassifier(random_state=42)
+    model.fit(X_train, y_train)
+    return model
+
+def Final_model(X_train, y_train, columns):
+    X_train = X_train[columns]
+    model = RandomForestClassifier(n_estimators=100, max_depth=10)
     model.fit(X_train, y_train)
     return model

@@ -65,6 +65,9 @@ def model_grid(X_train, X_test, y_test, y_train, columns):
                         y_pred = model.predict(X_test)
                         train_score = f1_score(y_test, y_pred)
                         results[run_name] = train_score
+                        mlflow.log_param("n_estimators", str(p_1))
+                        mlflow.log_param("max_depth", str(p_2))
+                        mlflow.log_metric("f1_score", train_score)
                         print(run_name, train_score)
         elif model_name == 'DecisionTreeClassifier':
             for p_1 in params["DecisionTreeClassifier"]["criterion"]:
@@ -76,6 +79,9 @@ def model_grid(X_train, X_test, y_test, y_train, columns):
                         y_pred = model.predict(X_test)
                         train_score = f1_score(y_test, y_pred)
                         results[run_name] = train_score
+                        mlflow.log_param("criterion", str(p_1))
+                        mlflow.log_param("max_depth", str(p_2))
+                        mlflow.log_metric("f1_score", train_score)
                         print(run_name, train_score)
         else:
             for i in params['LogisticRegression']:
@@ -86,6 +92,8 @@ def model_grid(X_train, X_test, y_test, y_train, columns):
                     y_pred = model.predict(X_test)
                     train_score = f1_score(y_test, y_pred)
                     results[run_name] = train_score
+                    mlflow.log_param("solvers", i)
+                    mlflow.log_metric("f1_score", train_score)
                     print(run_name, train_score)
     best_model_name = max(results, key=results.get)
     print( best_model_name, results[best_model_name])

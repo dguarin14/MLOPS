@@ -1,6 +1,6 @@
 """
 This is a boilerplate pipeline 'data_drift'
-generated using Kedro 0.19.4
+generated using Kedro 0.19.6
 """
 
 from .pipeline import create_pipeline
